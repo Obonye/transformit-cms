@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Title"
+    },
+    "featured_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "IT Solutions",
+        "Cybersecurity",
+        "Cloud Computing",
+        "Digital Transformation",
+        "Tech News",
+        "Best Practices",
+        "Branding"
+      ]
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "posts"
+    },
+    "SEO": {
+      "type": "component",
+      "repeatable": true,
+      "component": "seo.seo"
+    },
+    "reading_time": {
+      "type": "integer",
+      "default": 1
+    }
+  }
+}
